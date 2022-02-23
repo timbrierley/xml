@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE overlay-report-layers SYSTEM "https://apps.gov.bc.ca/pub/soe/xml/overlay_engine_layers_1_5.dtd">
+<overlay-report-layers>
+	<report-attributes>
+		<report-name>Land Use Report</report-name>
+		<disclaimer>This report has not been updated in a number of years and will be 
+		removed from the system unless the people using this report identify themselves.
+		Someone must take ownership and update the report.  If you use this report, please
+		contact the NRS Service Desk.
+		
+		The information contained in this database has been extracted from source
+      documents and it is intended for Ministry of Forests and its employees for
+      administrative purposes only. The Forest Tenure Section does not warrant or
+      guarantee the accuracy of this information.  Any use of this information is
+      at risk of the user and the Ministry of Sustainable Resources Management
+      assumes no liability for any losses financial or otherwise incurred as a result
+      of parties making decisions based on the information contained in this database.
+
+&lt;br&gt;&lt;br&gt;
+
+      User agencies and individuals must not rely solely on the data from GATOR as a
+      basis for a legal transaction of Crown land and resources. MSRM makes no
+      representations as to,  and does not warrant the accuracy or completeness of
+      Tantalis or GATOR and is not responsible for any errors or omissions. Users
+      should be aware that rights-of-way no longer appear as parcel encumbrances and
+      must therefore be researched from alternative spatial sources.
+    </disclaimer>
+	</report-attributes>
+	<layer name="Timber Supply Area">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_TSA</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_ADMIN_BOUNDARIES.FADM_TSA.FEATURE_CLASS_SKEY">
+			<feature-class value="821" name="Timber Supply Area">
+				<attributes>
+					<attribute>
+						<name>TSA Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSA_NUMBER</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Timber Supply Area {0}</string>
+					<attribute-name>TSA Number</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="822" name="Timber Supply Area Supply Block">
+				<attributes>
+					<attribute>
+						<name>TSA Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSA_NUMBER</column>
+					</attribute>
+					<attribute>
+						<name>TSB Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSB_NUMBER</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Timber Supply Area {0} , Timber Supply Block {1}</string>
+					<attribute-name>TSA Number</attribute-name>
+					<attribute-name>TSB Number</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Provincial Forest">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_CORP.CODE_LIST_TABLE</table>
+			<where>WHSE_CORP.CODE_LIST_TABLE.COLUMN_NAME = 'PROV_FOREST_CD' AND WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST.PROV_FOREST_CD = WHSE_CORP.CODE_LIST_TABLE.CODE_ARGUMENT</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>Prov Forest Name</name>
+				<column>WHSE_CORP.CODE_LIST_TABLE.expanded_result</column>
+			</attribute>
+			<attribute>
+				<name>Map Block</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST.map_block_id</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0}  Blk  {1}</string>
+			<attribute-name>Prov Forest Name</attribute-name>
+			<attribute-name>Map Block</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Provincial Forest Addition">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_CORP.CODE_LIST_TABLE</table>
+			<where>WHSE_CORP.CODE_LIST_TABLE.COLUMN_NAME = 'PROV_FOREST_CD' AND WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION.PROV_FOREST_CD = WHSE_CORP.CODE_LIST_TABLE.CODE_ARGUMENT</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>OIC Number</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION.OIC_NUMBER</column>
+			</attribute>
+			<attribute>
+				<name>OIC Year</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION.OIC_YEAR</column>
+			</attribute>
+			<attribute>
+				<name>Prov Forest Name</name>
+				<column>WHSE_CORP.CODE_LIST_TABLE.EXPANDED_RESULT</column>
+			</attribute>
+			<attribute>
+				<name>Map Block</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION.map_block_id</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Added to {0} Prov Forest YEAR {1} OIC {2} Blk {3}</string>
+			<attribute-name>Prov Forest Name</attribute-name>
+			<attribute-name>OIC Year</attribute-name>
+			<attribute-name>OIC Number</attribute-name>
+			<attribute-name>Map Block</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Provincial Forest Deletion">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_CORP.CODE_LIST_TABLE</table>
+			<where>WHSE_CORP.CODE_LIST_TABLE.COLUMN_NAME = 'PROV_FOREST_CD' AND WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION.PROV_FOREST_CD = WHSE_CORP.CODE_LIST_TABLE.CODE_ARGUMENT</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>Number</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION.DELETION_NUMBER</column>
+			</attribute>
+			<attribute>
+				<name>OIC Year</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION.DELETION_YEAR</column>
+			</attribute>
+			<attribute>
+				<name>Prov Forest Name</name>
+				<column>WHSE_CORP.CODE_LIST_TABLE.expanded_result</column>
+			</attribute>
+			<attribute>
+				<name>Map Block</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION.map_block_id</column>
+			</attribute>
+			<attribute>
+				<name>Doc Type</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION.DOCUMENT_TYPE</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Deleted from {0} Prov Forest {1} YEAR {2} NUMBER {3} Blk {4}</string>
+			<attribute-name>Prov Forest Name</attribute-name>
+			<attribute-name>Doc Type</attribute-name>
+			<attribute-name>OIC Year</attribute-name>
+			<attribute-name>Number</attribute-name>
+			<attribute-name>Map Block</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Provincial Forest Exclusion">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_EXCLUSION</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_CORP.CODE_LIST_TABLE</table>
+			<where>WHSE_CORP.CODE_LIST_TABLE.COLUMN_NAME = 'PROV_FOREST_CD' AND WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_EXCLUSION.PROV_FOREST_CD = WHSE_CORP.CODE_LIST_TABLE.CODE_ARGUMENT</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>Prov Forest Name</name>
+				<column>WHSE_CORP.CODE_LIST_TABLE.expanded_result</column>
+			</attribute>
+			<attribute>
+				<name>Area</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_EXCLUSION.AREA_TYPE</column>
+			</attribute>
+			<attribute>
+				<name>Number</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_EXCLUSION.EXCLUSION_NUMBER</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Excluded from {0} Prov Forest {1} {2}</string>
+			<attribute-name>Prov Forest Name</attribute-name>
+			<attribute-name>Area</attribute-name>
+			<attribute-name>Number</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Tree Farm Licence">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_TFL</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>FF ID</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL.FOREST_FILE_ID</column>
+			</attribute>
+			<attribute>
+				<name>Map Block ID</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL.MAP_BLOCK_ID</column>
+			</attribute>
+			<attribute>
+				<name>Map Area ID</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL.MAP_AREA_ID</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0} Blk  {1} Area {2}</string>
+			<attribute-name>FF ID</attribute-name>
+			<attribute-name>Map Block ID</attribute-name>
+			<attribute-name>Map Area ID</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Tree Farm Licence Additions">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.FEATURE_CLASS_SKEY">
+			<feature-class value="831" name="TFL Additions Sch A">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Doc Type</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.DOCUMENT_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>Ins Amd no</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.INS_AMD_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Added to {0} {1} {2} Sch A</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Doc Type</attribute-name>
+					<attribute-name>Ins Amd no</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="832" name="TFL Additions Sch B">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Doc Type</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.DOCUMENT_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>Ins Amd no</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION.INS_AMD_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Added to {0} {1} {2} Sch B</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Doc Type</attribute-name>
+					<attribute-name>Ins Amd no</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Tree Farm Licence Deletions">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.FEATURE_CLASS_SKEY">
+			<feature-class value="835" name="TFL Deletions Schedule A">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Doc Type</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.DOCUMENT_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>Ins Amd no</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.INS_AMD_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Deleted From {0} {1} {2} Sch A</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Doc Type</attribute-name>
+					<attribute-name>Ins Amd no</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="836" name="TFL Deletions Schedule B">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Doc Type</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.DOCUMENT_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>Ins Amd no</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION.INS_AMD_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Deleted From {0} {1} {2} Sch B</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Doc Type</attribute-name>
+					<attribute-name>Ins Amd no</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Pulpwood Agreement">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AGREEMENT</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>FF ID</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AGREEMENT.FOREST_FILE_ID</column>
+			</attribute>
+			<attribute>
+				<name>Map Block</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AGREEMENT.MAP_BLOCK_ID</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0} Blk {1}</string>
+			<attribute-name>FF ID</attribute-name>
+			<attribute-name>Map Block</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Pulpwood Area">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AREA</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>Pulpwood Area</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AREA.PULPWOOD_AREA</column>
+			</attribute>
+			<attribute>
+				<name>Map Block</name>
+				<column>WHSE_ADMIN_BOUNDARIES.FADM_PULPWOOD_AREA.MAP_BLOCK_ID</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0} Blk {1}</string>
+			<attribute-name>Pulpwood Area</attribute-name>
+			<attribute-name>Map Block</attribute-name>
+		</display-name>
+	</layer>
+	<layer name="Managed Licence">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.FEATURE_CLASS_SKEY">
+			<feature-class value="2399" name="Community Forest Schedule A">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Map Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.MAP_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Blk {1} Sch A</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Map Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="2400" name="Community Forest Schedule B">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Map Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.MAP_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Blk {1} Sch B</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Map Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="865" name="Wood Lot Licence Schedule A">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Map Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.MAP_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Blk {1} Sch A</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Map Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="866" name="Wood Lot Licence Schedule B">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Map Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW.MAP_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Blk {1} Sch B</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Map Block</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Special Protection Areas">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.FEATURE_CLASS_SKEY">
+			<feature-class value="511" name="Designated Areas">
+				<attributes>
+					<attribute>
+						<name>DA</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.DESIGNATED_AREA</column>
+					</attribute>
+					<attribute>
+						<name>Year</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.OIC_YEAR</column>
+					</attribute>
+					<attribute>
+						<name>OIC</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.OIC_NUMBER</column>
+					</attribute>
+					<attribute>
+						<name>Block</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.MAP_BLOCK_ID</column>
+					</attribute>
+					<attribute>
+						<name>Size</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.AREA_SIZE</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>DA {0} YEAR {1} OIC {2} Block {3} Size {4}</string>
+					<attribute-name>DA</attribute-name>
+					<attribute-name>Year</attribute-name>
+					<attribute-name>OIC</attribute-name>
+					<attribute-name>Block</attribute-name>
+					<attribute-name>Size</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="667" name="Protected Area Strategy - Study Area">
+				<attributes>
+					<attribute>
+						<name>PAS</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.PROTECTED_AREA_STRATEGY</column>
+					</attribute>
+					<attribute>
+						<name>Size</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.AREA_SIZE</column>
+					</attribute>
+					<attribute>
+						<name>Block</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.MAP_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>PAS {0} Size {1} Blk {3}</string>
+					<attribute-name>PAS</attribute-name>
+					<attribute-name>Size</attribute-name>
+					<attribute-name>Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="2403" name="Protected Areas ELU Act">
+				<attributes>
+					<attribute>
+						<name>PA</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.PROTECTED_AREA_NAME</column>
+					</attribute>
+					<attribute>
+						<name>Type</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.PROTECTED_AREA_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>Year</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.OIC_YEAR</column>
+					</attribute>
+					<attribute>
+						<name>OIC</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.OIC_NUMBER</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Protected Area {0} {1} Year {2} OIC {3}</string>
+					<attribute-name>PA</attribute-name>
+					<attribute-name>Type</attribute-name>
+					<attribute-name>Year</attribute-name>
+					<attribute-name>OIC</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="853" name="Wilderness Area">
+				<attributes>
+					<attribute>
+						<name>Strategy</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.PROTECTED_AREA_STRATEGY</column>
+					</attribute>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>OIC</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.OIC_NUMBER</column>
+					</attribute>
+					<attribute>
+						<name>Name</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_SPECIAL_PROTECTION_AREA.PROTECTED_AREA_NAME</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} OIC {1} {2} {3}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>OIC</attribute-name>
+					<attribute-name>Strategy</attribute-name>
+					<attribute-name>Name</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Cut Permit">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FEATURE_CLASS_SKEY">
+			<feature-class value="2401" name="Community Forest Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} </string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="556" name="Forest Licence Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="811" name="Timber Licence Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} Blk {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="815" name="Timber Sale Harvesting Licence Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="818" name="Timber Sale Licence Major Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="917" name="Timber Sale Licence Minor Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="834" name="Tree Farm Licence Cutting Permit ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Tree Farm Licence Cutting Permit  {0} Block  {1}</string>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="864" name="Wood Lot Licence Cutting Permit">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cutting Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.CUTTING_PERMIT_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cutting Permit</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Cut Block">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.FEATURE_CLASS_SKEY">
+			<feature-class value="2402" name="Community Forest Cut Block ">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Permit Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} Blk {2} CB {3}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Permit Block</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="555" name="Forest Licence Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="616" name="Licence to Cut Cut Block (NO CP)">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CB {1}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="905" name="NOT IN USE Old Cut Blocks">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Permit Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} Blk {2} CB {3}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Permit Block</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="810" name="Timber Licence Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="814" name="Timber Sale Harvesting Licence Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="817" name="Timber Sale Licence Major Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="820" name="Timber Sale Licence Minor CB Non Replaceable">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="2417" name="Timber Sale Licence Minor Replaceable">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="833" name="Tree Farm Licence Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="863" name="Wood Lot Licence Cut Block">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Permit</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.HARVEST_AUTH_CUTTING_PERMIT_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} CB {2}</string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Permit</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="868" name="X Timber Sale Cut Block (NO CP)">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>Cut Block</name>
+						<column>WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW.CUT_BLOCK_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CB {1} </string>
+					<attribute-name>FF ID</attribute-name>
+					<attribute-name>Cut Block</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Timber Sale">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FEATURE_CLASS_SKEY">
+			<feature-class value="819" name="Timber Sale Licence Minor">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0}</string>
+					<attribute-name>FF ID</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="867" name="X Timber Sale">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0}</string>
+					<attribute-name>FF ID</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Roads">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW</table>
+			<column>GEOMETRY</column>
+		</spatial-settings>
+		<feature-class-settings column="FEATURE_CLASS_SKEY">
+			<feature-class value="565" name="Forest Service Road - Protection Trail">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+					<attribute>
+						<name>name</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_NAME</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>FSR {0} Br {1} {3}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+					<attribute-name>name</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="783" name="Special Use Permit - Roads">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Sec {1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="2375" name="Woodlot Licence Sch B CP Roads">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1} Sec {2}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="918" name="Resource Development Roads">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} {1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="558" name="Forest Service Road (FSR)">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+					<attribute>
+						<name>name</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_NAME</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>FSR {0} Br {1} {2} {3}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+					<attribute-name>name</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="559" name="Forest Service Road - Access and Investigation">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0}</string>
+					<attribute-name>fsr</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="904" name="NOT IN USE - TFL Cutting Permit Roads">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} CP {1}</string>
+					<attribute-name>fsr</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="561" name="Forest Service Road - Determination">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>FSR {0} Br {1} Determined {2}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="563" name="Forest Service Road - Gazettes - Unsurveyed">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>FSR {0} Br {1} Gazetted {3}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="901" name="Right of Way 20 Year Easement Permit">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Sec{1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="635" name="Non-Status Roads (NSR)">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Sec {1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="570" name="Forest Service Road - Declaration">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>FSR {0} Br {1} Declared {3}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="767" name="Road Permit">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Sec {1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="592" name="Highways">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Hwy Sec {1}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="632" name="Municipal Road">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+					<attribute>
+						<name>name</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_NAME</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>MRN {0} {1} {2}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+					<attribute-name>name</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="728" name="Recreation Trail">
+				<attributes>
+					<attribute>
+						<name>fsr</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.FOREST_FILE_ID</column>
+					</attribute>
+					<attribute>
+						<name>branch</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_ID</column>
+					</attribute>
+					<attribute>
+						<name>name</name>
+						<column>WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW.ROAD_SECTION_NAME</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} Sec {1} {2} {3}</string>
+					<attribute-name>fsr</attribute-name>
+					<attribute-name>branch</attribute-name>
+					<attribute-name>name</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Range">
+		<spatial-settings>
+			<table>WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW.FEATURE_CLASS_SKEY">
+			<feature-class value="578" name="Grazing Licence">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} GRL</string>
+					<attribute-name>FF ID</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="580" name="Grazing Permit">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0} GRP</string>
+					<attribute-name>FF ID</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="586" name="Hay Cutting Area">
+				<attributes>
+					<attribute>
+						<name>FF ID</name>
+						<column>WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW.FOREST_FILE_ID</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>{0}</string>
+					<attribute-name>FF ID</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Surveyed Parcel Shapes">
+		<spatial-settings>
+			<table>WHSE_TANTALIS.TA_SURVEY_PARCELS_SVW</table>
+			<column>SHAPE</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>legal dsc</name>
+				<column>WHSE_TANTALIS.TA_SURVEY_PARCELS_SVW.PARCEL_LEGAL_DESCRIPTION</column>
+			</attribute>
+			<attribute>
+				<name>pin sid</name>
+				<column>WHSE_TANTALIS.TA_SURVEY_PARCELS_SVW.PIN_SID</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>PIN: {0,number,#} Legal Description:{1}</string>
+			<attribute-name>pin sid</attribute-name>
+			<attribute-name>legal dsc</attribute-name>
+		</display-name>
+		<url>
+			<name>Gator</name>
+			<string>http://a100.gov.bc.ca/pub/pls/gator/gator$querylist.search_sp_by_pin?v_Pin_Sid={0,number,#}&amp;v_Historical=ON</string>
+			<attribute-name>pin sid</attribute-name>
+		</url>
+	</layer>
+	<layer name="Interest Parcel Shapes">
+		<spatial-settings>
+			<table>WHSE_TANTALIS.TA_CROWN_TENURES_SVW</table>
+			<column>SHAPE</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>file no</name>
+				<column>WHSE_TANTALIS.TA_CROWN_TENURES_SVW.CROWN_LANDS_FILE</column>
+			</attribute>
+			<attribute>
+				<name>type</name>
+				<column>WHSE_TANTALIS.TA_CROWN_TENURES_SVW.TENURE_TYPE</column>
+			</attribute>
+			<attribute>
+				<name>purpose</name>
+				<column>WHSE_TANTALIS.TA_CROWN_TENURES_SVW.TENURE_PURPOSE</column>
+			</attribute>
+			<attribute>
+				<name>subpurpose</name>
+				<column>WHSE_TANTALIS.TA_CROWN_TENURES_SVW.TENURE_SUBPURPOSE</column>
+			</attribute>
+			<attribute>
+				<name>legal dsc</name>
+				<column>WHSE_TANTALIS.TA_CROWN_TENURES_SVW.TENURE_LEGAL_DESCRIPTION</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>File: {0}  Type: {1} Purpose: {2} Sub-Purpose: {3} Description: {4}</string>
+			<attribute-name>file no</attribute-name>
+			<attribute-name>type</attribute-name>
+			<attribute-name>purpose</attribute-name>
+			<attribute-name>subpurpose</attribute-name>
+			<attribute-name>legal dsc</attribute-name>
+		</display-name>
+		<url>
+			<name>Gator Main</name>
+			<string>http://a100.gov.bc.ca/pub/pls/gator/gator$queryforms.menu</string>
+		</url>
+	</layer>
+	<layer name="Administration Area Shapes">
+		<spatial-settings>
+			<table>WHSE_TANTALIS.TA_ADMIN_AREA_SHAPES</table>
+			<column>SHAPE</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_TANTALIS.TA_ADMIN_AREAS</table>
+			<table>WHSE_TANTALIS.TA_ADMIN_AREA_TYPES</table>
+			<where>WHSE_TANTALIS.TA_ADMIN_AREA_SHAPES.ADMIN_AREA_SID = WHSE_TANTALIS.TA_ADMIN_AREAS.ADMIN_AREA_SID and WHSE_TANTALIS.TA_ADMIN_AREAS.ADMIN_AREA_CDE=WHSE_TANTALIS.TA_ADMIN_AREA_TYPES.ADMIN_AREA_CDE</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>name</name>
+				<column>WHSE_TANTALIS.TA_ADMIN_AREAS.ADMIN_AREA_NME</column>
+			</attribute>
+			<attribute>
+				<name>type</name>
+				<column>WHSE_TANTALIS.TA_ADMIN_AREA_TYPES.TYPE_NAME_CHR</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0} {1}</string>
+			<attribute-name>name</attribute-name>
+			<attribute-name>type</attribute-name>
+		</display-name>
+		<url>
+			<name>Gator Main</name>
+			<string>http://a100.gov.bc.ca/pub/pls/gator/gator$queryforms.menu</string>
+		</url>
+	</layer>
+	<layer name="Well Site Shapes">
+		<spatial-settings>
+			<table>WHSE_TANTALIS.TA_WELLSITE_SHAPES</table>
+			<column>SHAPE</column>
+		</spatial-settings>
+		<foreign-tables>
+			<table>WHSE_TANTALIS.TA_WELLSITES</table>
+			<where>WHSE_TANTALIS.TA_WELLSITE_SHAPES.WELLSITE_SID  = WHSE_TANTALIS.TA_WELLSITES.WELLSITE_SID</where>
+		</foreign-tables>
+		<attributes>
+			<attribute>
+				<name>name</name>
+				<column>WHSE_TANTALIS.TA_WELLSITES.WELL_NAME</column>
+			</attribute>
+			<attribute>
+				<name>location</name>
+				<column>WHSE_TANTALIS.TA_WELLSITES.WELL_LOCATION_CHR</column>
+			</attribute>
+			<attribute>
+				<name>file no</name>
+				<column>WHSE_TANTALIS.TA_WELLSITES.FILE_CHR</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>{0} Location: {1} File: {2}</string>
+			<attribute-name>name</attribute-name>
+			<attribute-name>location</attribute-name>
+			<attribute-name>file no</attribute-name>
+		</display-name>
+		<url>
+			<name>Gator Main</name>
+			<string>http://a100.gov.bc.ca/pub/pls/gator/gator$queryforms.menu</string>
+		</url>
+	</layer>
+	<!-- Mines reporting added March 25 2002-->
+	<layer name="Mineral Claim Polygon">
+		<spatial-settings>
+			<table>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POLYS</table>
+			<column>GEOMETRY</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>tenure number</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POLYS.TENURE_NUMBER</column>
+			</attribute>
+			<attribute>
+				<name>tenure type</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POLYS.TENURE_TYPE</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Tenure Number: {0,number,#} Tenure Type:{1}</string>
+			<attribute-name>tenure number</attribute-name>
+			<attribute-name>tenure type</attribute-name>
+		</display-name>
+		<url>
+			<name>Title Search</name>
+			<string>http://www.mtonline.gov.bc.ca/mtov/tenureDetail.do?tenureNumberIDParam={0,number,#}</string>
+			<attribute-name>tenure number</attribute-name>
+		</url>
+	</layer>
+	<layer name="Mineral Claim Line">
+		<spatial-settings>
+			<table>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_LINES</table>
+			<column>GEOMETRY</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>tenure number</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_LINES.TENURE_NUMBER</column>
+			</attribute>
+			<attribute>
+				<name>tenure type</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_LINES.TENURE_TYPE</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Tenure Number: {0,number,#} Tenure Type:{1}</string>
+			<attribute-name>tenure number</attribute-name>
+			<attribute-name>tenure type</attribute-name>
+		</display-name>
+		<url>
+			<name>Title Search</name>
+			<string>http://www.mtonline.gov.bc.ca/mtov/tenureDetail.do?tenureNumberIDParam={0,number,#}</string>
+			<attribute-name>tenure number</attribute-name>
+		</url>
+	</layer>
+	<layer name="Mineral Claim Point">
+		<spatial-settings>
+			<table>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POINTS</table>
+			<column>GEOMETRY</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>tenure number</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POINTS.TENURE_NUMBER</column>
+			</attribute>
+			<attribute>
+				<name>tenure type</name>
+				<column>WHSE_MINERAL_TENURE.EMPR_MINERAL_TENURE_POINTS.TENURE_TYPE</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Tenure Number: {0,number,#} Tenure Type:{1}</string>
+			<attribute-name>tenure number</attribute-name>
+			<attribute-name>tenure type</attribute-name>
+		</display-name>
+		<url>
+			<name>Title Search</name>
+			<string>http://www.mtonline.gov.bc.ca/mtov/tenureDetail.do?tenureNumberIDParam={0,number,#}</string>
+			<attribute-name>tenure number</attribute-name>
+		</url>
+	</layer>
+	<layer name="CDC Endangered Species and Ecosystems - Non-sensitive Occurrences">
+		<spatial-settings>
+			<table>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.FEATURE_CODE">
+			<feature-class value="FF84660110" name="Animal - Vertebrate">
+				<attributes>
+					<attribute>
+						<name>shapeId</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SHAPE_ID</column>
+					</attribute>
+					<attribute>
+						<name>elType</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.EL_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>sciName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SCI_NAME_F</column>
+					</attribute>
+					<attribute>
+						<name>engName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.ENG_NAME_F</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Shape ID: {0}  Type: {1} Scientific Name: {2} English Name: {3}</string>
+					<attribute-name>shapeId</attribute-name>
+					<attribute-name>elType</attribute-name>
+					<attribute-name>sciName</attribute-name>
+					<attribute-name>engName</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="FF84660120" name="Animal - Invertebrate">
+				<attributes>
+					<attribute>
+						<name>shapeId</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SHAPE_ID</column>
+					</attribute>
+					<attribute>
+						<name>elType</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.EL_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>sciName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SCI_NAME_F</column>
+					</attribute>
+					<attribute>
+						<name>engName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.ENG_NAME_F</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Shape ID: {0}  Type: {1} Scientific Name: {2} English Name: {3}</string>
+					<attribute-name>shapeId</attribute-name>
+					<attribute-name>elType</attribute-name>
+					<attribute-name>sciName</attribute-name>
+					<attribute-name>engName</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="F84660300" name="Ecological Community">
+				<attributes>
+					<attribute>
+						<name>shapeId</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SHAPE_ID</column>
+					</attribute>
+					<attribute>
+						<name>elType</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.EL_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>sciName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SCI_NAME_F</column>
+					</attribute>
+					<attribute>
+						<name>engName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.ENG_NAME_F</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Shape ID: {0}  Type: {1} Scientific Name: {2} English Name: {3}</string>
+					<attribute-name>shapeId</attribute-name>
+					<attribute-name>elType</attribute-name>
+					<attribute-name>sciName</attribute-name>
+					<attribute-name>engName</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="FF84660210" name="Plant - Vascular">
+				<attributes>
+					<attribute>
+						<name>shapeId</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SHAPE_ID</column>
+					</attribute>
+					<attribute>
+						<name>elType</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.EL_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>sciName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SCI_NAME_F</column>
+					</attribute>
+					<attribute>
+						<name>engName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.ENG_NAME_F</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Shape ID: {0}  Type: {1}  Scientific Name: {2}  English Name: {3}</string>
+					<attribute-name>shapeId</attribute-name>
+					<attribute-name>elType</attribute-name>
+					<attribute-name>sciName</attribute-name>
+					<attribute-name>engName</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="FF84660220" name="Plant - Non-vascular">
+				<attributes>
+					<attribute>
+						<name>shapeId</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SHAPE_ID</column>
+					</attribute>
+					<attribute>
+						<name>elType</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.EL_TYPE</column>
+					</attribute>
+					<attribute>
+						<name>sciName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.SCI_NAME_F</column>
+					</attribute>
+					<attribute>
+						<name>engName</name>
+						<column>WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW.ENG_NAME_F</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Shape ID: {0}  Type: {1} Scientific Name: {2} English Name: {3}</string>
+					<attribute-name>shapeId</attribute-name>
+					<attribute-name>elType</attribute-name>
+					<attribute-name>sciName</attribute-name>
+					<attribute-name>engName</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+</overlay-report-layers>
