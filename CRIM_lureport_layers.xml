@@ -66,7 +66,7 @@
 	<layer name="Shorezone Biobands">
 		<spatial-settings>
 			<table>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV</table>
-			<column>geometry</column>
+			<column>shape</column>
 		</spatial-settings>
 		<attributes>
 			<attribute>
