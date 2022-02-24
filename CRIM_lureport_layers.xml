@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE overlay-report-layers SYSTEM "https://apps.gov.bc.ca/pub/soe/xml/overlay_engine_layers_1_5.dtd">
+<overlay-report-layers>
+	<report-attributes>
+		<report-name>Land Use Report</report-name>
+		<disclaimer>This report has not been updated in a number of years and will be 
+		removed from the system unless the people using this report identify themselves.
+		Someone must take ownership and update the report.  If you use this report, please
+		contact the NRS Service Desk.
+		
+		The information contained in this database has been extracted from source
+      documents and it is intended for Ministry of Forests and its employees for
+      administrative purposes only. The Forest Tenure Section does not warrant or
+      guarantee the accuracy of this information.  Any use of this information is
+      at risk of the user and the Ministry of Sustainable Resources Management
+      assumes no liability for any losses financial or otherwise incurred as a result
+      of parties making decisions based on the information contained in this database.
+
+&lt;br&gt;&lt;br&gt;
+
+      User agencies and individuals must not rely solely on the data from GATOR as a
+      basis for a legal transaction of Crown land and resources. MSRM makes no
+      representations as to,  and does not warrant the accuracy or completeness of
+      Tantalis or GATOR and is not responsible for any errors or omissions. Users
+      should be aware that rights-of-way no longer appear as parcel encumbrances and
+      must therefore be researched from alternative spatial sources.
+    </disclaimer>
+	</report-attributes>
+	<layer name="TEST LAYER">
+		<spatial-settings>
+			<table>WHSE_ADMIN_BOUNDARIES.FADM_TSA</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<feature-class-settings column="WHSE_ADMIN_BOUNDARIES.FADM_TSA.FEATURE_CLASS_SKEY">
+			<feature-class value="821" name="Timber Supply Area">
+				<attributes>
+					<attribute>
+						<name>TSA Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSA_NUMBER</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Timber Supply Area {0}</string>
+					<attribute-name>TSA Number</attribute-name>
+				</display-name>
+			</feature-class>
+			<feature-class value="822" name="Timber Supply Area Supply Block">
+				<attributes>
+					<attribute>
+						<name>TSA Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSA_NUMBER</column>
+					</attribute>
+					<attribute>
+						<name>TSB Number</name>
+						<column>WHSE_ADMIN_BOUNDARIES.FADM_TSA.TSB_NUMBER</column>
+					</attribute>
+				</attributes>
+				<display-name>
+					<string>Timber Supply Area {0} , Timber Supply Block {1}</string>
+					<attribute-name>TSA Number</attribute-name>
+					<attribute-name>TSB Number</attribute-name>
+				</display-name>
+			</feature-class>
+		</feature-class-settings>
+	</layer>
+	<layer name="Shorezone Biobands">
+		<spatial-settings>
+			<table>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV</table>
+			<column>geometry</column>
+		</spatial-settings>
+		<attributes>
+			<attribute>
+				<name>Phyident</name>
+				<column>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV.PHYIDENT</column>
+			</attribute>
+			<attribute>
+				<name>Bar</name>
+				<column>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV.BAR</column>
+			</attribute>
+			<attribute>
+				<name>Bre</name>
+				<column>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV.BRE</column>
+			</attribute>
+		</attributes>
+		<display-name>
+			<string>Bioband ID  {0} Bare Bre  {1} Barnacle Bar {2}</string>
+			<attribute-name>Phyident</attribute-name>
+			<attribute-name>Bre</attribute-name>
+			<attribute-name>Bar</attribute-name>
+		</display-name>
+	</layer>
+</overlay-report-layers>
