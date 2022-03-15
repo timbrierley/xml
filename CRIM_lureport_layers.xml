@@ -63,7 +63,7 @@
 			</feature-class>
 		</feature-class-settings>
 	</layer>
-	<layer name="Shorezone Biobands">
+	<!--<layer name="Shorezone Biobands">
 		<spatial-settings>
 			<table>WHSE_ENVIRONMENTAL_MONITORING.SHZN_BIOBANDING_LINES_SV</table>
 			<column>shape</column>
@@ -88,5 +88,5 @@
 			<attribute-name>Bre</attribute-name>
 			<attribute-name>Bar</attribute-name>
 		</display-name>
-	</layer>
+	</layer>-->
 </overlay-report-layers>
